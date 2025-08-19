@@ -797,7 +797,7 @@
                 navigator.serviceWorker.register('./sw.js', { scope: './' })
                     .then(async function(reg){
                         console.log('ServiceWorker registration successful.', reg);
-                        const waitUntil = function (){
+                        /*const waitUntil = function (){
                             return new Promise(function(resolve){
                                 var timer = setInterval(function(){
                                     if(navigator.serviceWorker.controller || reg.active){
@@ -808,7 +808,16 @@
                             });
                         };
                         await waitUntil();
-                        
+                        */
+                       // Wait until this page is controlled by a SW
+                        await new Promise(resolve => {
+                            if (navigator.serviceWorker.controller) {
+                                resolve();
+                            } else {
+                                navigator.serviceWorker.addEventListener('controllerchange', () => resolve(), { once: true });
+                            }
+                        });
+
                         navigator.serviceWorker.addEventListener('message', function(event){ console.log(event);
                             if (event.data && event.data.type === 'UPDATE_AVAILABLE' && event.data.version) {
                                 showNotifier('Update available. New version: '+event.data.version, 'success', 1500);
@@ -822,7 +831,7 @@
                             }
                         });
                         
-                        (navigator.serviceWorker.controller || reg.active).postMessage({
+                        navigator.serviceWorker.controller.postMessage({
                             type: 'CHECK_VERSION'
                         });
                         if (navigator.storage && navigator.storage.persist) {
