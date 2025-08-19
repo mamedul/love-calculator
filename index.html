@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Love Calculator</title>
+
+    <!-- PWA Meta Tags -->
+    <meta name="author" content="MAMEDUL ISLAM">
+    <meta name="theme-color" content="#ff7aac"/>
+    <link rel="manifest" href="./manifest.json">
+	<link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+	<link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Find out your love compatibility with our fun and beautiful Love Calculator! Enter your names and see the score. An installable PWA game for couples.">
+    <meta name="keywords" content="love calculator, love test, compatibility test, relationship calculator, couple compatibility, PWA game, fun app, Mamedul Islam">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mamedul.ddns.net/love-calculator/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mamedul.github.io/love-calculator/">
+    <meta property="og:title" content="Love Calculator - A Fun PWA to Test Your Compatibility">
+    <meta property="og:description" content="Find out your love compatibility with our fun and beautiful Love Calculator! Enter your names and see the score. Share your results with friends.">
+    <!-- TODO: Replace with a URL to a preview image (e.g., 1200x630px) -->
+    <meta property="og:image" content="https://mamedul.github.io/love-calculator/social-preview.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mamedul.github.io/love-calculator/">
+    <meta property="twitter:title" content="Love Calculator - A Fun PWA to Test Your Compatibility">
+    <meta property="twitter:description" content="Find out your love compatibility with our fun and beautiful Love Calculator! Enter your names and see the score. Share your results with friends.">
+    <!-- TODO: Replace with a URL to a preview image (e.g., 1200x630px) -->
+    <meta property="twitter:image" content="https://mamedul.github.io/love-calculator/social-preview.png">
+
+    <script>
+        !function(t,e){"use strict";t=t||"docReady",e=e||window;var n=[],a=!1,o=!1;function c(){if(!a){a=!0;for(var t=0;t<n.length;t++)n[t].fn.call(window,n[t].ctx);n=[]}}function d(){"complete"===document.readyState&&c()}e[t]=function(t,e){if("function"!=typeof t)throw TypeError("callback for docReady(fn) must be a function");if(a){setTimeout(function(){t(e)},1);return}n.push({fn:t,ctx:e}),"complete"!==document.readyState&&(document.attachEvent||"interactive"!==document.readyState)?o||(document.addEventListener?(document.addEventListener("DOMContentLoaded",c,!1),window.addEventListener("load",c,!1)):(document.attachEvent("onreadystatechange",d),window.attachEvent("onload",c)),o=!0):setTimeout(c,1)}}("docReady",window),function(t){let e=t.querySelector?t.querySelector("html"):t.body.parentNode||t.head.parentNode||t.children||t.all[0];e.classList.remove("no-js"),e.classList.add("js"),docReady(function(){setTimeout(function(){e.classList.add("js-loaded")},500)})}(document||window.document);
+    </script>
+	 <style>
+        body,html{position:relative;overscroll-behavior-y:contain;overscroll-behavior:contain;min-height:100%;touch-action:pan-x pan-y}#loading-icon{display:none;background:#ffccd5;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99999}#loading-icon .ripple-loading,#loading-icon .ripple-loading div{box-sizing:border-box}#loading-icon .ripple-loading{position:relative;width:80px;height:80px;left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}#loading-icon .ripple-loading div{position:absolute;border:4px solid #e8202e;opacity:1;border-radius:50%;-webkit-animation:1s cubic-bezier(0,.2,.8,1) infinite rippler;animation:1s cubic-bezier(0,.2,.8,1) infinite rippler}#loading-icon .ripple-loading div:nth-child(2){-webkit-animation-delay:-.5s;animation-delay:-.5s;border-color:#ece717}@-webkit-keyframes rippler{0%,4.9%{top:36px;left:36px;width:8px;height:8px;opacity:0}5%{top:36px;left:36px;width:8px;height:8px;opacity:1}100%{top:0;left:0;width:80px;height:80px;opacity:0}}@keyframes rippler{0%,4.9%{top:36px;left:36px;width:8px;height:8px;opacity:0}5%{top:36px;left:36px;width:8px;height:8px;opacity:1}100%{top:0;left:0;width:80px;height:80px;opacity:0}}html.js #loading-icon{display:block}html.js.js-loaded #app{display:-ms-flexbox;display:flex;}html.js #app,html.js.js-loaded #loading-icon,html.no-js #app{display:none}
+    </style>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    
+    <!-- html2canvas library for downloading result as image -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #fff0f5; /* Lavender Blush */
+            --primary-color: #ff7aac; /* Pink */
+            --secondary-color: #ff4081; /* Hot Pink */
+            --accent-color: #d81b60; /* Deep Pink */
+            --text-color: #333;
+            --white-color: #ffffff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        *, *::after, *::before{
+            box-sizing: border-box;
+        }
+
+        html{
+            height: 100%;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            background-size: 32px;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><path d='M2.34594 11.2501C2.12458 10.5866 2 9.92019 2 9.26044C2 3.3495 7.50016 0.662637 12 5.49877C16.4998 0.662637 22 3.34931 22 9.2604C22 9.92017 21.8754 10.5866 21.6541 11.2501H18.6361L18.5241 11.25C17.9784 11.2491 17.4937 11.2483 17.0527 11.4447C16.6116 11.6411 16.2879 12.002 15.9233 12.4084L15.8485 12.4918L14.8192 13.6354C14.7426 13.7205 14.68 13.79 14.6247 13.8493C14.5723 13.7879 14.5128 13.7159 14.4401 13.6277L10.8889 9.32318C10.7493 9.15391 10.6 8.97281 10.454 8.8384C10.2839 8.68188 10.0325 8.50581 9.68096 8.4847C9.32945 8.46359 9.05875 8.60829 8.87115 8.74333C8.71006 8.8593 8.54016 9.02123 8.38136 9.17258L6.85172 10.6294C6.37995 11.0787 6.28151 11.1553 6.17854 11.1964C6.07557 11.2376 5.9515 11.2501 5.3 11.2501H2.34594Z' fill='%23ffccd5'/><path d='M3.00441 12.7501C4.38539 15.312 6.93029 17.7142 8.96173 19.3707C10.2937 20.4569 10.9597 21 12 21C13.0403 21 13.7063 20.4569 15.0383 19.3707C17.0697 17.7142 19.6146 15.312 20.9956 12.7501H18.6361C17.9119 12.7501 17.7746 12.7652 17.6629 12.815C17.5513 12.8647 17.4481 12.9567 16.9634 13.4952L15.9086 14.6672C15.7507 14.8428 15.5839 15.0283 15.4235 15.1628C15.2384 15.318 14.9627 15.4921 14.5896 15.4841C14.2166 15.476 13.9488 15.2904 13.7704 15.1274C13.616 14.9862 13.4574 14.7938 13.3074 14.6118L9.75487 10.3057C9.68734 10.2239 9.63239 10.1573 9.5839 10.1005C9.52897 10.1511 9.46645 10.2106 9.38961 10.2838L7.81346 11.785C7.4575 12.125 7.14165 12.4267 6.73563 12.5892C6.32961 12.7516 5.89282 12.7509 5.40054 12.7502L3.00441 12.7501Z' fill='%23ffccd5'/></svg>");
+        }
+
+        a{
+            color: var(--secondary-color);
+        }
+
+        #app{
+            position: relative;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -ms-flex-align: center;
+            align-items: center;
+            min-height: 100%;
+        }
+
+        /* Confetti Canvas */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* Main App Container */
+        .container {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
+            margin-left: 16px;
+            margin-right: 16px;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 var(--shadow-color);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            max-width: 450px;
+            -webkit-animation: fadeIn 0.8s ease-out;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @-webkit-keyframes fadeIn {
+            from { opacity: 0; -webkit-transform: scale(0.9); }
+            to { opacity: 1; -webkit-transform: scale(1); }
+        }
+
+        /* Header */
+        .header h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.8rem;
+            color: var(--accent-color);
+            margin: 0 0 0.5rem 0;
+        }
+
+        .header p {
+            color: var(--secondary-color);
+            font-size: 1rem;
+            margin: 0 0 1.5rem 0;
+        }
+        
+        /* Input Fields */
+        .input-group {
+            position: relative;
+            margin: 0.5rem 0;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ffc2d1;
+            border-radius: 12px;
+            font-size: 1rem;
+            background-color: var(--white-color);
+            transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(255, 122, 172, 0.5);
+        }
+
+        .heart-icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            left: 1rem;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            -webkit-transition: -webkit-transform 0.3s ease;
+        }
+
+        .input-group input {
+            padding-left: 3.5rem;
+        }
+        
+        .input-group:focus-within .heart-icon {
+            transform: translateY(-50%) scale(1.2);
+            -webkit-transform: translateY(-50%) scale(1.2);
+        }
+
+        .plus-icon {
+            font-size: 2rem;
+            line-height: 1;
+            width: 2rem;
+            height: 2rem;
+            text-align: center;
+            color: var(--secondary-color);
+            margin: -1rem 0;
+            display: inline-block;
+            transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            transform-origin: center;
+            -webkit-transform-origin: center;
+            transition: transform 0.5s ease;
+            -webkit-transition: -webkit-transform 0.5s ease;
+        }
+
+        /* Calculate Button */
+        .calculate-btn {
+            width: 100%;
+            margin-top: 1.4rem;
+            padding: 1rem;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+            color: var(--white-color);
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 64, 129, 0.4);
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-3px);
+            -webkit-transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 64, 129, 0.6);
+        }
+
+        /* Heart Progress Bar */
+        #progress-container {
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+        .heart-loader {
+            width: 100px;
+            height: 90px;
+            position: relative;
+            background: #ffc2d1;
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+            animation: beat 1s infinite;
+            -webkit-animation: beat 1s infinite;
+            margin-bottom: 1.5rem;
+        }
+        .heart-loader::before, .heart-loader::after {
+            content: '';
+            width: 100px;
+            height: 100px;
+            background: #ffc2d1;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart-loader::before { top: -50px; left: 0; }
+        .heart-loader::after { top: 0; left: 50px; }
+        .progress-fill {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0%;
+            background: linear-gradient(to top, var(--secondary-color), var(--primary-color));
+            animation: fill-progress 5s linear forwards;
+            -webkit-animation: fill-progress 5s linear forwards;
+        }
+        #progress-text {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+        @keyframes beat { 0%, 100% { transform: scale(1) rotate(-45deg); } 50% { transform: scale(1.1) rotate(-45deg); } }
+        @-webkit-keyframes beat { 0%, 100% { -webkit-transform: scale(1) rotate(-45deg); } 50% { -webkit-transform: scale(1.1) rotate(-45deg); } }
+        @keyframes fill-progress { from { height: 0%; } to { height: 100%; } }
+        @-webkit-keyframes fill-progress { from { height: 0%; } to { height: 100%; } }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            color: var(--accent-color);
+        }
+
+        /* Result Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            -webkit-transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .modal-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--white-color);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+            transform: scale(0.8);
+            -webkit-transform: scale(0.8);
+            transition: transform 0.4s ease;
+            -webkit-transition: transform 0.4s ease;
+        }
+
+        .modal-overlay.visible .modal-content {
+            transform: scale(1);
+            -webkit-transform: scale(1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #eee;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #888;
+            line-height: 30px;
+        }
+
+        .result-score {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 5px 20px rgba(255, 64, 129, 0.5);
+        }
+
+        .result-score span {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--white-color);
+        }
+
+        .result-message {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-names {
+            font-size: 1rem;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+        }
+
+        /* Modal Action Buttons */
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .action-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            color: var(--white-color);
+        }
+        #download-btn { background-color: #4caf50; }
+        #share-btn { background-color: #2196f3; }
+        .action-btn:hover { transform: translateY(-2px); -webkit-transform: translateY(-2px); }
+        .hide-for-download { display: none !important; }
+
+        .modal-credit {
+            text-align: center;
+            white-space: pre;
+            font-size: 0.75rem;
+            line-height: 1.2;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 2px;
+            border: 1px dashed var(--secondary-color);
+            opacity: 0.3;
+            -webkit-opacity: 0.3;
+            margin: 0 -1.8rem -1.8rem -1.8rem;
+        }
+        
+        /* Error Shake Animation */
+        .shake { animation: shake 0.5s; }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        @-webkit-keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { -webkit-transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { -webkit-transform: translateX(5px); }
+        }
+        .help{
+            cursor: default;
+        }
+        .icon.help{
+            display: inline-block;
+            font-size: 0.8333rem;
+            line-height: 1.2;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            color: var(--white-color);
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Love Calculator",
+      "description": "A fun and beautifully designed Progressive Web App to calculate the love compatibility between two people based on their names.",
+      "applicationCategory": "EntertainmentApplication",
+      "operatingSystem": "Any",
+      "author": {
+        "@type": "Person",
+        "name": "MAMEDUL ISLAM"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      }
+    }
+    </script>
+    
+</head>
+<body>
+
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="https://www.google.com/chrome/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div id="loading-icon">
+        <div class="ripple-loading">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <div id="app">
+        <canvas id="confetti-canvas"></canvas>
+
+        <main class="container">
+            <div id="calculator-form">
+                <header class="header">
+                    <h1>Love Calculator</h1>
+                    <p>Find out your love compatibility! <span class="icon help">?</span></p>
+                </header>
+
+                <div class="input-group">
+                    <span class="heart-icon">❤️</span>
+                    <input type="text" id="your-name" class="input-field" placeholder="Your Name" autocomplete="name">
+                </div>
+
+                <div class="plus-icon"><span class="help">+</span></div>
+
+                <div class="input-group">
+                    <span class="heart-icon">❤️</span>
+                    <input type="text" id="partner-name" class="input-field" placeholder="Partner's Name" autocomplete="name">
+                </div>
+
+                <button id="calculate-btn" class="calculate-btn">Calculate Love</button>
+
+                <footer class="footer">
+                    <p>Made with <span class="help">❤️</span>  by <a href="https://mamedul.github.io"
+						title="Full-Stack Developer &amp; WordPress Expert. Specializing in WooCommerce, PHP, MySQL, and modern web development. Creating exceptional digital experiences since 2017.">MAMEDUL
+						ISLAM</a></p>
+                </footer>
+            </div>
+
+            <div id="progress-container">
+                <div class="heart-loader">
+                    <div class="progress-fill"></div>
+                </div>
+                <p id="progress-text">Calculating your destiny...</p>
+            </div>
+
+        </main>
+
+        <div id="content-modal" class="modal-overlay">
+            <div class="modal-content">
+                <h2>How Does the Love Calculator Work?</h2>
+                <p>
+                    Our Love Calculator is a fun and simple PWA designed for entertainment. It uses a custom algorithm to calculate the compatibility score between two names. Just enter your name and your partner's name to get a percentage-based love score. It's a perfect relationship test for couples, a fun game to play with friends, and a great way to see your potential match. Share your love test results and see if you are a match made in heaven!
+                    <a href="./docs/">..see more</a>
+                </p>
+                <button class="close-btn">&times;</button>
+            </div>
+        </div>
+
+        <div id="result-modal" class="modal-overlay">
+            <div class="modal-content">
+                <div id="result-to-download">
+                    <div class="result-score">
+                        <span id="score">0%</span>
+                    </div>
+                    <h2 id="result-message" class="result-message"></h2>
+                    <p id="result-names" class="result-names"></p>
+                </div>
+                <div class="modal-actions">
+                    <button id="download-btn" class="action-btn">Download</button>
+                    <button id="share-btn" class="action-btn">Share</button>
+                </div>
+                <div class="modal-credit hide-for-download"></div>
+                <button class="close-btn">&times;</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        docReady(function(){
+        
+            // --- App Elements ---
+            const yourNameInput = document.getElementById('your-name');
+            const partnerNameInput = document.getElementById('partner-name');
+            const calculateBtn = document.getElementById('calculate-btn');
+            const contentModal = document.getElementById('content-modal');
+            const resultModal = document.getElementById('result-modal');
+            const helps = document.getElementsByClassName('help');
+            const closeModalBtns = document.getElementsByClassName('close-btn');
+            const scoreEl = document.getElementById('score');
+            const resultMessageEl = document.getElementById('result-message');
+            const resultNamesEl = document.getElementById('result-names');
+            const plusIcon = document.querySelector('.plus-icon');
+            const calculatorForm = document.getElementById('calculator-form');
+            const progressContainer = document.getElementById('progress-container');
+            const downloadBtn = document.getElementById('download-btn');
+            const shareBtn = document.getElementById('share-btn');
+            const resultNode = document.getElementById('result-to-download');
+
+            // --- Event Listeners ---
+            calculateBtn.addEventListener('click', handleCalculation);
+            for(var i=0;i<helps.length; i++){
+                helps[i].addEventListener('click', function(){ contentModal.classList.add('visible'); });
+            }
+            for(var i=0;i<closeModalBtns.length; i++){
+                closeModalBtns[i].addEventListener('click',closeModal);
+            }
+            resultModal.addEventListener('click', function(e) { if (e.target === resultModal) closeModal(); });
+            contentModal.addEventListener('click', function(e) { if (e.target === contentModal) closeModal(); });
+            downloadBtn.addEventListener('click', downloadResult);
+            shareBtn.addEventListener('click', shareResult);
+            //window.addEventListener('DOMContentLoaded', handleUrlHash);
+
+            // --- Core Functions ---
+            function handleCalculation() {
+                const name1 = yourNameInput.value.trim();
+                const name2 = partnerNameInput.value.trim();
+
+                let isValid = true;
+                if (name1 === '') { showError(yourNameInput); isValid = false; }
+                if (name2 === '') { showError(partnerNameInput); isValid = false; }
+
+                if (isValid) {
+                    calculatorForm.style.display = 'none';
+                    progressContainer.style.display = 'flex';
+                    
+                    setTimeout(function() {
+                        progressContainer.style.display = 'none';
+                        calculatorForm.style.display = 'block';
+                        const score = calculateLoveScore(name1, name2);
+                        displayResult(score, name1, name2);
+                        plusIcon.style.transform = `rotate(${Math.random() * 360}deg)`;
+                    }, 5000); // 5-second progress bar
+                }
+            }
+
+            function showError(inputElement) {
+                inputElement.classList.add('shake');
+                setTimeout(function(){ inputElement.classList.remove('shake'); }, 500);
+            }
+
+            function calculateLoveScore(name1, name2) {
+                const combinedNames = (name1 + name2).toLowerCase().replace(/\s/g, '');
+                let hash = 0;
+                for (let i = 0; i < combinedNames.length; i++) {
+                    hash = (hash << 5) - hash + combinedNames.charCodeAt(i);
+                    hash |= 0;
+                }
+                return Math.abs(hash % 101);
+            }
+
+            function displayResult(score, name1, name2) {
+                scoreEl.textContent = `${score}%`;
+                resultNamesEl.textContent = `${capitalize(name1)} & ${capitalize(name2)}`;
+                
+                let message = '';
+                if (score > 85) message = "A match made in heaven! ✨";
+                else if (score > 70) message = "You two are a great match! ❤️";
+                else if (score > 50) message = "There's a definite spark! 🔥";
+                else if (score > 33) message = "There's potential here! 🌱";
+                else message = "Maybe just good friends? 🤔";
+                resultMessageEl.textContent = message;
+
+                resultModal.classList.add('visible');
+
+                if (score > 33) {
+                    launchConfetti();
+                }
+            }
+
+            function closeModal() {
+                resultModal.classList.remove('visible');
+                contentModal.classList.remove('visible');
+                stopConfetti();
+            }
+
+            function capitalize(str) {
+                return str.charAt(0).toUpperCase() + str.slice(1);
+            }
+
+            // --- Share and Download ---
+            function downloadResult() {
+                const closeButton = resultNode.parentElement.querySelector('.close-btn');
+                const actionButtons = document.querySelector('.modal-actions');
+                const credit = document.querySelector('.modal-credit');
+
+                // Temporarily hide buttons for the screenshot
+                
+                closeButton.classList.add('hide-for-download');
+                actionButtons.classList.add('hide-for-download');
+                credit.textContent = `${window.location.origin}${window.location.pathname}${window.location.search}`; 
+                credit.classList.remove('hide-for-download');
+
+                html2canvas(resultNode.parentElement || resultNode.parentNode, { backgroundColor: null }).then(function(canvas){
+                    const link = document.createElement('a');
+                    link.download = `love-result-${yourNameInput.value}-${partnerNameInput.value}.png`;
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                }).finally(function(){
+                    // Show buttons again
+                    const closeButton = resultNode.parentElement.querySelector('.close-btn');
+                    const actionButtons = document.querySelector('.modal-actions');
+                    const credit = document.querySelector('.modal-credit');
+                    closeButton.classList.remove('hide-for-download');
+                    actionButtons.classList.remove('hide-for-download');
+                    credit.classList.add('hide-for-download');
+                });
+            }
+
+            async function shareResult() {
+                const name1 = yourNameInput.value.trim();
+                const name2 = partnerNameInput.value.trim();
+                const score = calculateLoveScore(name1, name2);
+                
+                const encryptedNames = btoa(`${name1}|${name2}`); // Base64 encode
+                const shareUrl = `${window.location.origin}${window.location.pathname}${window.location.search}#${encryptedNames}`;
+                
+                const shareData = {
+                    title: 'Love Calculator Result',
+                    text: `I calculated my love score for ${name1} & ${name2} and we got ${score}%! See for yourself:`,
+                    url: shareUrl,
+                };
+
+                try {
+                    if (navigator.share) {
+                        await navigator.share(shareData);
+                    } else {
+                        // Fallback for browsers that don't support Web Share API
+                        navigator.clipboard.writeText(shareUrl).then(function(){
+                            alert('Link copied to clipboard!');
+                        });
+                    }
+                } catch (err) {
+                    console.error("Couldn't share the result:", err);
+                }
+            }
+
+            function handleUrlHash() {
+                if (window.location.hash) {
+                    try {
+                        const hash = window.location.hash.substring(1);
+                        const decryptedNames = atob(hash).split('|'); // Base64 decode
+                        if (decryptedNames.length === 2) {
+                            const [name1, name2] = decryptedNames;
+                            yourNameInput.value = name1;
+                            partnerNameInput.value = name2;
+                            const score = calculateLoveScore(name1, name2);
+                            displayResult(score, name1, name2);
+                        }
+                    } catch (e) {
+                        console.error('Failed to decode names from URL hash:', e);
+                    }
+                }
+            }
+
+            // --- Confetti Logic ---
+            const confettiCanvas = document.getElementById('confetti-canvas');
+            const ctx = confettiCanvas.getContext('2d');
+            let confettiParticles = [];
+            let animationFrameId;
+
+            function launchConfetti() {
+                confettiCanvas.width = window.innerWidth;
+                confettiCanvas.height = window.innerHeight;
+                confettiParticles = [];
+                for (let i = 0; i < 150; i++) {
+                    confettiParticles.push(createParticle());
+                }
+                animateConfetti();
+            }
+
+            function stopConfetti() {
+                if (animationFrameId) {
+                    cancelAnimationFrame(animationFrameId);
+                }
+                ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+            }
+
+            function createParticle() {
+                return {
+                    x: Math.random() * confettiCanvas.width, y: -20,
+                    w: Math.random() * 10 + 5, h: Math.random() * 10 + 5,
+                    color: `hsl(${Math.random() * 360}, 100%, 75%)`,
+                    speed: Math.random() * 3 + 2, tilt: Math.random() * 20 - 10,
+                    tiltAngle: 0, tiltAngleIncrement: Math.random() * 0.1 + 0.05
+                };
+            }
+
+            function animateConfetti() {
+                ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+                
+                confettiParticles.forEach(function(p, i) {
+                    p.y += p.speed;
+                    p.x += Math.sin(p.tiltAngle);
+                    p.tiltAngle += p.tiltAngleIncrement;
+
+                    ctx.fillStyle = p.color;
+                    ctx.save();
+                    ctx.translate(p.x + p.w / 2, p.y + p.h / 2);
+                    ctx.rotate(p.tiltAngle);
+                    ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+                    ctx.restore();
+
+                    if (p.y > confettiCanvas.height) {
+                        confettiParticles.splice(i, 1);
+                    }
+                });
+
+                if (confettiParticles.length > 0) {
+                    animationFrameId = requestAnimationFrame(animateConfetti);
+                } else {
+                    stopConfetti();
+                }
+            }
+
+            handleUrlHash();
+
+            // --- PWA Service Worker Registration ---
+            if ('serviceWorker'in navigator) {
+                navigator.serviceWorker.register('./sw.js', { scope: './' })
+                    .then(async function(reg){
+                        console.log('ServiceWorker registration successful.', reg);
+                        const waitUntil = function (){
+                            return new Promise(function(resolve){
+                                var timer = setInterval(function(){
+                                    if(navigator.serviceWorker.controller || reg.active){
+                                        clearInterval(timer);
+                                        resolve();
+                                    }
+                                },1000);
+                            });
+                        };
+                        await waitUntil();
+                        
+                        navigator.serviceWorker.addEventListener('message', function(event){ console.log(event);
+                            if (event.data && event.data.type === 'UPDATE_AVAILABLE' && event.data.version) {
+                                showNotifier('Update available. New version: '+event.data.version, 'success', 1500);
+                            }
+                            if (event.data && event.data.type === 'FORCE_RELOAD') {
+                                if(isPWA()){
+                                    showNotifier('Please exit the app & then re-open to update', 'success', 6000);
+                                }else{
+                                    showNotifier('Please reload/refresh the tab to update', 'success', 6000);
+                                }
+                            }
+                        });
+                        
+                        (navigator.serviceWorker.controller || reg.active).postMessage({
+                            type: 'CHECK_VERSION'
+                        });
+                        if (navigator.storage && navigator.storage.persist) {
+                            navigator.storage.persist().then(function(granted){
+                                if (granted) {
+                                    console.log("Storage will not be cleared except by user action");
+                                } else {
+                                    console.log("Storage may be cleared by the browser under pressure");
+                                }
+                            });
+                        }
+                    })
+                    .catch(function(err){
+                        console.log('ServiceWorker registration failed: ', err)
+                    });
+                
+            }
+        });
+    </script>
+</body>
+</html>
