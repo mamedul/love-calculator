@@ -248,12 +248,9 @@
             padding: 2rem 0;
         }
         .heart-loader {
-            width: 100px;
-            height: 90px;
+            width: 10rem;
+            height: 10rem;
             position: relative;
-            background: #ffc2d1;
-            transform: rotate(-45deg);
-            -webkit-transform: rotate(-45deg);
             animation: beat 1s infinite;
             -webkit-animation: beat 1s infinite;
             margin-bottom: 1.5rem;
@@ -265,6 +262,7 @@
             background: #ffc2d1;
             border-radius: 50%;
             position: absolute;
+            display: none;
         }
         .heart-loader::before { top: -50px; left: 0; }
         .heart-loader::after { top: 0; left: 50px; }
@@ -272,9 +270,12 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 100%;
-            height: 0%;
+            width: 10rem;
+            height: 10rem;
             background: linear-gradient(to top, var(--secondary-color), var(--primary-color));
+            clip-path: path("M50% 90% C35% 75%, 10% 60%, 10% 35% C10% 20%, 25% 10%, 40% 10% C50% 10%, 50% 20%, 50% 20% C50% 10%, 60% 10%, 60% 10% C75% 10%, 90% 20%, 90% 35% C90% 60%, 65% 75%, 50% 90% Z");
+            -webkit-clip-path: path("M50% 90% C35% 75%, 10% 60%, 10% 35% C10% 20%, 25% 10%, 40% 10% C50% 10%, 50% 20%, 50% 20% C50% 10%, 60% 10%, 60% 10% C75% 10%, 90% 20%, 90% 35% C90% 60%, 65% 75%, 50% 90% Z");
+            clip-path: polygon( 50% 15%, 61% 6%, 75% 6%, 86% 15%, 93% 27%, 94% 40%, 90% 52%, 82% 63%, 71% 73%, 58% 82%, 50% 88%, 42% 82%, 29% 73%, 18% 63%, 10% 52%, 6% 40%, 7% 27%, 14% 15%, 25% 6%, 39% 6% );
             animation: fill-progress 5s linear forwards;
             -webkit-animation: fill-progress 5s linear forwards;
         }
@@ -282,10 +283,34 @@
             color: var(--accent-color);
             font-weight: 600;
         }
-        @keyframes beat { 0%, 100% { transform: scale(1) rotate(-45deg); } 50% { transform: scale(1.1) rotate(-45deg); } }
-        @-webkit-keyframes beat { 0%, 100% { -webkit-transform: scale(1) rotate(-45deg); } 50% { -webkit-transform: scale(1.1) rotate(-45deg); } }
-        @keyframes fill-progress { from { height: 0%; } to { height: 100%; } }
-        @-webkit-keyframes fill-progress { from { height: 0%; } to { height: 100%; } }
+        @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        @-webkit-keyframes beat { 0%, 100% { -webkit-transform: scale(1); } 50% { -webkit-transform: scale(1.1); } }
+        @keyframes fill-progress {
+            0% { background: linear-gradient(to top, var(--accent-color) 0%, var(--primary-color) 0% 100%); }
+            10% { background: linear-gradient(to top, var(--accent-color) 10%, var(--primary-color) 10% 100%); }
+            20% { background: linear-gradient(to top, var(--accent-color) 20%, var(--primary-color) 20% 100%); }
+            30% { background: linear-gradient(to top, var(--accent-color) 30%, var(--primary-color) 30% 100%); }
+            40% { background: linear-gradient(to top, var(--accent-color) 40%, var(--primary-color) 40% 100%); }
+            50% { background: linear-gradient(to top, var(--accent-color) 50%, var(--primary-color) 50% 100%); }
+            60% { background: linear-gradient(to top, var(--accent-color) 60%, var(--primary-color) 60% 100%); }
+            70% { background: linear-gradient(to top, var(--accent-color) 70%, var(--primary-color) 70% 100%); }
+            80% { background: linear-gradient(to top, var(--accent-color) 80%, var(--primary-color) 80% 100%); }
+            90% { background: linear-gradient(to top, var(--accent-color) 90%, var(--primary-color) 90% 100%); }
+            100% { background: linear-gradient(to top, var(--accent-color) 100%, var(--white-color) 100% 100%); }
+        }
+        @-webkit-keyframes fill-progress {
+            0% { background: linear-gradient(to top, var(--accent-color) 0%, var(--primary-color) 0% 100%); }
+            10% { background: linear-gradient(to top, var(--accent-color) 10%, var(--primary-color) 10% 100%); }
+            20% { background: linear-gradient(to top, var(--accent-color) 20%, var(--primary-color) 20% 100%); }
+            30% { background: linear-gradient(to top, var(--accent-color) 30%, var(--primary-color) 30% 100%); }
+            40% { background: linear-gradient(to top, var(--accent-color) 40%, var(--primary-color) 40% 100%); }
+            50% { background: linear-gradient(to top, var(--accent-color) 50%, var(--primary-color) 50% 100%); }
+            60% { background: linear-gradient(to top, var(--accent-color) 60%, var(--primary-color) 60% 100%); }
+            70% { background: linear-gradient(to top, var(--accent-color) 70%, var(--primary-color) 70% 100%); }
+            80% { background: linear-gradient(to top, var(--accent-color) 80%, var(--primary-color) 80% 100%); }
+            90% { background: linear-gradient(to top, var(--accent-color) 90%, var(--primary-color) 90% 100%); }
+            100% { background: linear-gradient(to top, var(--accent-color) 100%, var(--primary-color) 100% 100%); }
+        }
 
         /* Footer */
         .footer {

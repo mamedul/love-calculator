@@ -43,13 +43,13 @@ To get a local copy up and running, follow these simple steps.
 
 ---
 
-### Prerequisites
+### 📝 Prerequisites
 
 You need a simple local server to run this project, as PWAs require a secure context (`https` or `localhost`).
 
 ---
 
-### Installation
+### 🔌 Installation
 
 1.  **Clone the repo**
 ```sh
