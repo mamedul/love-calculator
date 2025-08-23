@@ -2,7 +2,7 @@
   "name": "Love Calculator",
   "short_name": "LoveCalc",
   "description": "Find out your love compatibility with our fun and beautiful Love Calculator! Enter your names and see the score. Share your results with friends.",
-  "version": "2025.08.20",
+  "version": "2025.08.23",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
