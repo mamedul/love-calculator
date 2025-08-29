@@ -130,3 +130,89 @@ This project is licensed under the [MIT License](https://mit-license.org/) — f
 If you find this extension useful, please consider giving it a star on GitHub! Your support helps motivate further development and improvements.
 
 [![GitHub stars](https://img.shields.io/github/stars/mamedul/unit-converter?style=for-the-badge)](https://github.com/mamedul/unit-converter/stargazers) &nbsp; If you found this project helpful, give it a ⭐ on GitHub!
+
+
+## Names
+
+*Here is the translation Names of "Love Calculator" into over 75 of the world's most used languages.*
+
+1.  **Afrikaans:** Liefdesrekenaar
+2.  **Albanian:** Llogaritësi i Dashurisë
+3.  **Amharic:** የፍቅር ማስያ
+4.  **Arabic:** حاسبة الحب
+5.  **Armenian:** Սիրո հաշվիչ
+6.  **Azerbaijani:** Sevgi Kalkulyatoru
+7.  **Basque:** Maitasun Kalkulagailua
+8.  **Belarusian:** Калькулятар кахання
+9.  **Bengali:** লাভ ক্যালকুলেটর (Love Calculator)
+10. **Bosnian:** Kalkulator ljubavi
+11. **Bulgarian:** Любовен калкулатор
+12. **Catalan:** Calculadora de l'amor
+13. **Chinese (Simplified):** 爱情计算器
+14. **Chinese (Traditional):** 愛情計算器
+15. **Croatian:** Ljubavni kalkulator
+16. **Czech:** Kalkulačka lásky
+17. **Danish:** Kærlighedsberegner
+18. **Dutch:** Liefdescalculator
+19. **English:** Love Calculator
+20. **Estonian:** Armastuse kalkulaator
+21. **Filipino (Tagalog):** Calculator ng Pag-ibig
+22. **Finnish:** Rakkauslaskuri
+23. **French:** Calculateur d'amour
+24. **German:** Liebesrechner
+25. **Greek:** Υπολογιστής Αγάπης
+26. **Gujarati:** લવ કેલ્ક્યુલેટર
+27. **Haitian Creole:** Kalkilatè Lanmou
+28. **Hausa:** Lissafin Soyayya
+29. **Hebrew:** מחשבון אהבה
+30. **Hindi:** प्रेम कैलकुलेटर (Prem Calculator)
+31. **Hungarian:** Szerelem kalkulátor
+32. **Icelandic:** Ástarreiknivél
+33. **Igbo:** Ihe mgbako ịhụnanya
+34. **Indonesian:** Kalkulator Cinta
+35. **Italian:** Calcolatore d'Amore
+36. **Japanese:** 恋愛計算機 (Ren'ai Keisanki)
+37. **Javanese:** Kalkulator Katresnan
+38. **Kannada:** ಪ್ರೀತಿಯ ಕ್ಯಾಲ್ಕುಲೇಟರ್
+39. **Kazakh:** Махаббат калькуляторы
+40. **Khmer:** កម្មវិធីគណនាស្នេហា
+41. **Korean:** 사랑 계산기 (Sarang Gyesangi)
+42. **Kurdish (Kurmanji):** Hesibkera Evînê
+43. **Lao:** ເຄື່ອງຄິດໄລ່ຄວາມຮັກ
+44. **Latvian:** Mīlestības kalkulators
+45. **Lithuanian:** Meilės skaičiuoklė
+46. **Macedonian:** Љубовен калкулатор
+47. **Malay:** Kalkulator Cinta
+48. **Malayalam:** പ്രണയ കാൽക്കുലേറ്റർ
+49. **Maltese:** Kalkulatur tal-Imħabba
+50. **Marathi:** प्रेम कॅल्क्युलेटर
+51. **Mongolian:** Хайрын тооцоолуур
+52. **Myanmar (Burmese):** အချစ်တွက်ချက်စက်
+53. **Nepali:** प्रेम क्याल्कुलेटर
+54. **Norwegian:** Kjærlighetskalkulator
+55. **Pashto:** د مینې محاسبه کوونکی
+56. **Persian (Farsi):** ماشین حساب عشق
+57. **Polish:** Kalkulator miłości
+58. **Portuguese:** Calculadora do Amor
+59. **Punjabi:** ਪਿਆਰ ਕੈਲਕੁਲੇਟਰ
+60. **Romanian:** Calculator de dragoste
+61. **Russian:** Калькулятор любви
+62. **Serbian:** Калкулатор љубави (Cyrillic) / Kalkulator ljubavi (Latin)
+63. **Slovak:** Kalkulačka lásky
+64. **Slovenian:** Kalkulator ljubezni
+65. **Somali:** Xisaabiyaha Jacaylka
+66. **Spanish:** Calculadora de Amor
+67. **Swahili:** Kikokotoo cha Mapenzi
+68. **Swedish:** Kärlekskalkylator
+69. **Tamil:** காதல் கால்குலேட்டர்
+70. **Telugu:** లవ్ కాలిక్యులేటర్
+71. **Thai:** เครื่องคำนวณความรัก
+72. **Turkish:** Aşk Hesaplayıcı
+73. **Ukrainian:** Калькулятор кохання
+74. **Urdu:** محبت کا کیلکولیٹر
+75. **Uzbek:** Sevgi kalkulyatori
+76. **Vietnamese:** Máy tính tình yêu
+77. **Welsh:** Cyfrifiannell Cariad
+78. **Yiddish:** ליבע קאַלקולאַטאָר
+79. **Yoruba:** Ẹrọ iṣiro Ifẹ
+80. **Zulu:** Isibali Sothando
